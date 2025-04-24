@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Foods on 大菲哥的博客</title>
+    <link>https://pzdnzj.github.io/food/</link>
+    <description>Recent content in Foods on 大菲哥的博客</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 24 Apr 2025 20:43:32 +0800</lastBuildDate>
+    <atom:link href="https://pzdnzj.github.io/food/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Firstfood</title>
+      <link>https://pzdnzj.github.io/food/firstfood/</link>
+      <pubDate>Thu, 24 Apr 2025 20:43:32 +0800</pubDate>
+      <guid>https://pzdnzj.github.io/food/firstfood/</guid>
+      <description></description>
+    </item>
+  </channel>
+</rss>

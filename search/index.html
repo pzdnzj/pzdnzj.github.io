@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en-us">
+  <head>
+    <title>搜索 // 大菲哥的博客</title>
+    <link rel="shortcut icon" href="/favicon.ico" />
+    <meta charset="utf-8" />
+    <meta name="generator" content="Hugo 0.146.7">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="author" content="大菲哥" />
+    <meta name="description" content="" />
+    <link rel="stylesheet" href="/css/main.min.5b1fcc8902588589c4767187402a3c29f8b8d7a6fdef6d9f8f77045bb0d14fee.css" />
+    
+
+    
+    
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="搜索">
+  <meta name="twitter:description" content="search">
+
+    <meta property="og:url" content="https://pzdnzj.github.io/search/">
+  <meta property="og:site_name" content="大菲哥的博客">
+  <meta property="og:title" content="搜索">
+  <meta property="og:description" content="search">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:published_time" content="2025-04-24T23:25:27+08:00">
+    <meta property="article:modified_time" content="2025-04-24T23:25:27+08:00">
+
+
+  </head>
+  <body>
+    <header class="app-header">
+      <a href="/"><img class="app-header-avatar" src="/my.png" alt="大菲哥" /></a>
+      <span class="app-header-title">大菲哥的博客</span>
+      <nav class="app-header-menu">
+          <a class="app-header-menu-item" href="/">Home</a>
+             - 
+          
+          <a class="app-header-menu-item" href="/posts/">Blog</a>
+             - 
+          
+          <a class="app-header-menu-item" href="/about/">About</a>
+             - 
+          
+          <a class="app-header-menu-item" href="/search/">Search</a>
+      </nav>
+      <p>欢迎来到大菲哥的博客</p>
+    </header>
+    <main class="app-container">
+      
+<main>
+  <h1>搜索</h1>
+
+  <input id="searchBox" type="text" placeholder="输入关键词..." style="width: 100%; padding: 0.5rem; font-size: 1rem;" />
+  <ul id="searchResults"></ul>
+
+  <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.6.2/dist/fuse.min.js"></script>
+  <script>
+    async function initSearch() {
+      const res = await fetch("/index.json");
+      const pages = await res.json();
+
+      const fuse = new Fuse(pages, {
+        keys: ['title', 'content'],
+        includeMatches: true,
+        threshold: 0.4,
+      });
+
+      const input = document.getElementById('searchBox');
+      const results = document.getElementById('searchResults');
+
+      input.addEventListener('input', () => {
+        const query = input.value;
+        results.innerHTML = '';
+        if (query.length < 2) return;
+
+        const matches = fuse.search(query);
+        for (const match of matches) {
+          const li = document.createElement('li');
+          li.innerHTML = `<a href="${match.item.url}">${match.item.title}</a>`;
+          results.appendChild(li);
+        }
+      });
+    }
+
+    initSearch();
+  </script>
+</main>
+
+    </main>
+  </body>
+</html>
